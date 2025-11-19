@@ -1,0 +1,76 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Polymart]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>Polymart</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 19 Nov 2025 21:32:51 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 19 Nov 2025 21:32:48 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[nuxt_cloudflare_workers_hyperdrive_prisma_full_guide]]></title><link>a-attachments/nuxt_cloudflare_workers_hyperdrive_prisma_full_guide.html</link><guid isPermaLink="false">A - Attachments/nuxt_cloudflare_workers_hyperdrive_prisma_full_guide.pdf</guid><pubDate>Wed, 19 Nov 2025 21:22:03 GMT</pubDate></item><item><title><![CDATA[0003 - Use Prisma]]></title><description><![CDATA[Supporting evidence
+We noted working with Postgres directly was complex and time consuming, we opted to look at ORM solutions to aid in the development of a datasafe layer to handle all db interactions.
+We will Add Prisma Layer on top of PostgreSQL.Drizzle
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://orm.drizzle.team/" target="_self">https://orm.drizzle.team/</a>
+Main site has a lot of negative reviews coming from their own twitter showcase feed. Project looks new and immature.
+Positive
+• A proper ORM will make it easier to migrate data in the future, as well as safely interact with the DB now during the development of a new site on existing data.
+Risks &amp; Trade-offs
+• Implementing prisma will require a complete refactor of the production database.
+Follow-up actions
+Not Applicable
+]]></description><link>01-decision-records-(adrs)/0003-use-prisma.html</link><guid isPermaLink="false">01 - Decision Records (ADRs)/0003 - Use Prisma.md</guid><pubDate>Wed, 19 Nov 2025 00:00:00 GMT</pubDate></item><item><title><![CDATA[0002 - Use PostgreSQL]]></title><description><![CDATA[Supporting evidence
+I considered switching the db from postgres to best fit a serverless api and the new nuxt stack.
+We will Use PostgreSQL.
+Maria
+Firestore
+Positive
+• All existing data is already on postgres
+Risks &amp; Trade-offs
+• In order to implement Prisma, or otherwise expand site functionality, we will need to refactor the entire database
+Follow-up actions [ ] ]]></description><link>01-decision-records-(adrs)/0002-use-postgresql.html</link><guid isPermaLink="false">01 - Decision Records (ADRs)/0002 - Use PostgreSQL.md</guid><pubDate>Wed, 19 Nov 2025 00:00:00 GMT</pubDate></item><item><title><![CDATA[Site Tree]]></title><description><![CDATA[Drag from below or double clickSpace + Drag to panCtrl + Scroll to zoom]]></description><link>02-system-bible/00-site-tree/site-tree.html</link><guid isPermaLink="false">02 - System Bible/00 - Site Tree/Site Tree.canvas</guid><pubDate>Wed, 19 Nov 2025 20:23:50 GMT</pubDate></item><item><title><![CDATA[0001 - Build Portal in Nuxt Stack]]></title><description><![CDATA[Supporting evidence
+After assessing stacks the new developer is most familiar with, we determined the feature set of NUXT on Nitro with Vite would best serve the long term features of polymart.
+We will Build Overhaul in Nuxt Stack.
+T3 Stack
+Next Stack
+Retaining PHP
+Positive
+• This should result in fastest development time without issues or bugs
+Risks &amp; Trade-offs
+• Careful consideration will need to be made when choosing how to apply the hybrid rendering system nuxt provides.
+Follow-up actions [ ] ]]></description><link>01-decision-records-(adrs)/0001-build-portal-in-nuxt-stack.html</link><guid isPermaLink="false">01 - Decision Records (ADRs)/0001 - Build Portal in Nuxt Stack.md</guid><pubDate>Wed, 19 Nov 2025 00:00:00 GMT</pubDate></item><item><title><![CDATA[Untitled]]></title><description><![CDATA[addon system]]></description><link>00-admin/unsorted-todo's/untitled.html</link><guid isPermaLink="false">00 - Admin/Unsorted ToDo's/Untitled.md</guid><pubDate>Wed, 19 Nov 2025 16:43:47 GMT</pubDate></item><item><title><![CDATA[Boost Time]]></title><description><![CDATA[831454298542047244 reported that the boost is delayed by a few minutes and doesnt always unlock exactly 24 hours later]]></description><link>00-admin/legacy-reports/boost-time.html</link><guid isPermaLink="false">00 - Admin/Legacy Reports/Boost Time.md</guid><pubDate>Wed, 19 Nov 2025 16:43:19 GMT</pubDate></item><item><title><![CDATA[Weekly Log]]></title><description><![CDATA[&lt;%*
+const today = tp.date.now("yyyy-MM-dd"); // e.g. 2025-11-21
+const year = tp.date.now("yyyy");
+const weekNumber = tp.date.now("WW"); // ISO week number
+const weekString = ${year}-W${weekNumber.padStart(2, "0")};// Prompt (you can just hit Enter — defaults to current week)
+const finalWeek = await tp.system.prompt("Week", weekString, true);// Rename + move
+await tp.file.rename(finalWeek);
+await tp.file.move("/03 - Weekly Log/" + finalWeek);// Build the note
+tR += ## Done this week\n- \n\n;
+tR += ## Blockers / Risks / Compromises\n- \n\n;
+tR += ## Numbers\n;
+tR += - Revenue: \n;
+tR += - Platform fees: \n;
+tR += - Payouts sent: \n;
+tR += - New listings: \n;
+tR += - Support tickets: \n\n;
+tR += ## Next week\n- \n;
+%&gt;]]></description><link>t-templates/weekly-log.html</link><guid isPermaLink="false">T - Templates/Weekly Log.md</guid><pubDate>Wed, 19 Nov 2025 16:42:45 GMT</pubDate></item><item><title><![CDATA[New ADR]]></title><description><![CDATA[&lt;%*
+// Dataview API
+const dv = app.plugins.plugins.dataview?.api;// Next ADR number
+let nextNum = "0001";
+if (dv) {
+nextNum = String(dv.pages('"01 - Decision Records (ADRs)"').length + 1).padStart(4, "0");
+} else {
+nextNum = await tp.system.prompt("ADR number", "0001");
+}// What we actually decided
+let action = await tp.system.prompt("Decision / action", "Switch to Clerk for auth");// Filename &amp; move
+let filename = ${nextNum} - ${action};
+await tp.file.rename(filename);
+await tp.file.move("/01 - Decision Records (ADRs)/" + filename);let today = tp.date.now("YYYY-MM-DD");tR += `---
+adr: "{action}"
+deciders: []
+date: ${today}
+tags: [adr]Supporting evidenceWe will ${action}. Positive
+• Risks &amp; Trade-offs
+• Follow-up actions [ ]
+`;
+%&gt; ]]></description><link>t-templates/new-adr.html</link><guid isPermaLink="false">T - Templates/New ADR.md</guid><pubDate>Wed, 19 Nov 2025 16:37:55 GMT</pubDate></item><item><title><![CDATA[07 - Runbook]]></title><description><![CDATA[how to start, restart, or debug major infra or site issues]]></description><link>02-system-bible/07-runbook.html</link><guid isPermaLink="false">02 - System Bible/07 - Runbook.md</guid><pubDate>Wed, 19 Nov 2025 16:20:40 GMT</pubDate></item><item><title><![CDATA[06 - Security & Compliance]]></title><link>02-system-bible/06-security-&amp;-compliance.html</link><guid isPermaLink="false">02 - System Bible/06 - Security &amp; Compliance.md</guid><pubDate>Wed, 19 Nov 2025 16:20:06 GMT</pubDate></item><item><title><![CDATA[05 - Automation]]></title><description><![CDATA[Background jobs, cron functions etc]]></description><link>02-system-bible/05-automation.html</link><guid isPermaLink="false">02 - System Bible/05 - Automation.md</guid><pubDate>Wed, 19 Nov 2025 16:20:00 GMT</pubDate></item><item><title><![CDATA[04 - Infrastructure & Deploy]]></title><link>02-system-bible/04-infrastructure-&amp;-deploy.html</link><guid isPermaLink="false">02 - System Bible/04 - Infrastructure &amp; Deploy.md</guid><pubDate>Wed, 19 Nov 2025 16:19:21 GMT</pubDate></item><item><title><![CDATA[03 - API Contracts]]></title><link>02-system-bible/03-api-contracts.html</link><guid isPermaLink="false">02 - System Bible/03 - API Contracts.md</guid><pubDate>Wed, 19 Nov 2025 16:19:04 GMT</pubDate></item><item><title><![CDATA[02 - Data Model]]></title><link>02-system-bible/02-data-model.html</link><guid isPermaLink="false">02 - System Bible/02 - Data Model.md</guid><pubDate>Wed, 19 Nov 2025 16:18:48 GMT</pubDate></item><item><title><![CDATA[If We Had Unlimited Money]]></title><description><![CDATA[Note
+If someone handed me a blank check tomorrow, this is exactly what I would fix or build in the first 12 months, in priority order. No fluff, no nice-to-haves — these are the highest-ROI changes that would make Polymart dramatically more secure, scalable, and maintainable.
+d]]></description><link>04-due-diligence-kit/if-we-had-unlimited-money.html</link><guid isPermaLink="false">04 - Due Diligence Kit/If We Had Unlimited Money.md</guid><pubDate>Wed, 19 Nov 2025 15:55:40 GMT</pubDate></item><item><title><![CDATA[Tech Debt Tracker]]></title><description><![CDATA[Note
+This file is a complete, honest list of every technical corner I consciously cut while building Polymart. Every item here is something I knowingly shipped to move faster, with an estimated severity and rough payback timeline. Nothing is hidden. We can treat this as the exact to-do list whenever developers are idle.
+d]]></description><link>04-due-diligence-kit/tech-debt-tracker.html</link><guid isPermaLink="false">04 - Due Diligence Kit/Tech Debt Tracker.md</guid><pubDate>Wed, 19 Nov 2025 15:53:47 GMT</pubDate></item><item><title><![CDATA[Security & Compliance Gaps]]></title><description><![CDATA[Note
+Full disclosure of every security, privacy, or compliance gap that exists in Polymart today. These are the items that would fail a formal audit right now. Each line is something I am aware of and have deliberately de-prioritized until we have funding or a larger team. This is the security roadmap in reverse.
+d]]></description><link>04-due-diligence-kit/security-&amp;-compliance-gaps.html</link><guid isPermaLink="false">04 - Due Diligence Kit/Security &amp; Compliance Gaps.md</guid><pubDate>Wed, 19 Nov 2025 15:53:43 GMT</pubDate></item><item><title><![CDATA[Scalability & Breaking Points]]></title><description><![CDATA[Note
+These are the exact places Polymart will break or become expensive at the next order-of-magnitude growth. Every bottleneck, single point of failure, and “works until X users” limit is documented here with real numbers from production. This is the infrastructure shopping list for 10×–100× scale.
+d]]></description><link>04-due-diligence-kit/scalability-&amp;-breaking-points.html</link><guid isPermaLink="false">04 - Due Diligence Kit/Scalability &amp; Breaking Points.md</guid><pubDate>Wed, 19 Nov 2025 15:53:40 GMT</pubDate></item></channel></rss>
